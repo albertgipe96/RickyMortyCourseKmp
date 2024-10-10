@@ -63,6 +63,9 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.serialization.json)
+
+            // ViewModel
+            implementation(libs.viewmodel.compose)
         }
         iosMain.dependencies {
             // Ktor
