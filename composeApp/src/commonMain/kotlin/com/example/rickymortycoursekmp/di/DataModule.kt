@@ -1,6 +1,8 @@
 package com.example.rickymortycoursekmp.di
 
+import com.example.rickymortycoursekmp.data.RepositoryImpl
 import com.example.rickymortycoursekmp.data.remote.ApiService
+import com.example.rickymortycoursekmp.domain.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -26,4 +28,5 @@ val dataModule = module {
         }
     }
     factoryOf(::ApiService)
+    factory<Repository> { RepositoryImpl(get()) }
 }
