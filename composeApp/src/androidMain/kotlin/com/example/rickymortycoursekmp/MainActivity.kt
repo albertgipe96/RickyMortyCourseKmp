@@ -11,13 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            RickMortyApp()
+            App()
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    RickMortyApp()
 }
