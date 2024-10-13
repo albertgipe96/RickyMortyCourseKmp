@@ -88,6 +88,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
                 Text(
                     modifier = Modifier
                         .padding(horizontal = 24.dp, vertical = 16.dp)
+                        .fillMaxHeight()
                         .vertical()
                         .rotate(-90F),
                     text = characterModel.name,
@@ -99,7 +100,10 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
                     overflow = TextOverflow.Ellipsis
                 )
             }
-        } ?: Box(contentAlignment = Alignment.Center) { CircularProgressIndicator() }
+        } ?: Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) { CircularProgressIndicator(color = Color.Green) }
     }
 }
 
@@ -140,9 +144,9 @@ fun CharactersGridList(
                         CharacterItemList(characterModel = characterModel)
                     }
                 }
-                if (characters.loadState.refresh is LoadState.Loading) {
+                if (characters.loadState.append is LoadState.Loading) {
                     item(span = { GridItemSpan(2) }) {
-                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center) {
                             CircularProgressIndicator(modifier = Modifier.size(60.dp), color = Color.Red)
                         }
                     }
